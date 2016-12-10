@@ -1,0 +1,43 @@
+{
+  "name": "aul",
+  "version": "1.0.0",
+  "description": "Elegant database queries executor",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zemd/aul.git"
+  },
+  "keywords": [
+    "database",
+    "query bulder",
+    "knex",
+    "orm"
+  ],
+  "author": "Dmitry Zelenetskiy <dmitry.zelenetskiy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zemd/aul/issues"
+  },
+  "homepage": "https://github.com/zemd/aul",
+  "devDependencies": {
+    "ava": "0.17.0"
+  },
+  "dependencies": {
+    "koa-compose": "3.2.1"
+  },
+  "ava": {
+    "files": [
+      "test/src/**/*.js"
+    ],
+    "sources": [
+      "src/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  }
+}
