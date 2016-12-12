@@ -98,6 +98,21 @@ class Executor {
   }
 
   /**
+   * Helper function to return first element of result
+   *
+   * @param {Criteria|{}} criteria
+   */
+  findOne(criteria) {
+    return this.execute(criteria)
+      .then(r => {
+        if (Array.isArray(r)) {
+          return r[0];
+        }
+        return r;
+      });
+  }
+
+  /**
    * Build query by passed criteria and run it. Each filter can be defined as async await function or return Promise.
    *
    * @param {Criteria|{}} criteria
@@ -117,6 +132,7 @@ class Executor {
           if (!criteria.mappers.length) {
             return results;
           }
+          // TODO: check if results is array
           return criteria.mappers.reduce((results, mapper) => {
             if (typeof mapper === "function") {
               // use custom mapper function that is provided with criteria
