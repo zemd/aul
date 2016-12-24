@@ -64,7 +64,7 @@ test("resolveFilterPath throw an Error if filter not found", t => {
   const path = require("path");
   const ex = new Executor({path: path.join(process.cwd(), "test/fixtures") });
   t.throws(function () {
-    ex.resolveFilterPath("test2");
+    ex.resolveFilterPath("unknownFilter");
   });
 });
 
@@ -79,6 +79,22 @@ test("resolveFilters returns initialized array of filter functions", t => {
   t.true(Array.isArray(res));
   t.is(res.length, 1);
   t.true(typeof res[0] === "function");
+});
+
+test("resolveFilters return array of function even if filters were appended", t => {
+  t.plan(2);
+  const path = require("path");
+  const ex = new Executor({path: path.join(process.cwd(), "test/fixtures")});
+  const res = ex.resolveFilters({
+    test: {},
+    test2: [
+      {opt1: 1},
+      {opt1: 2}
+    ]
+  });
+
+  t.true(Array.isArray(res));
+  t.is(res.length, 3);
 });
 
 test("mapValues", t => {

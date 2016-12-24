@@ -19,15 +19,24 @@ class Criteria {
    */
   constructor(source) {
     this._source = source;
-    this._filters = {};
+    this._filters = Object.create(null);
     this._mappers = [];
   }
 
   /**
    * @param {string} name
    * @param {{}} opts
+   * @param {boolean} append
    */
-  addFilter(name, opts) {
+  addFilter(name, opts, append = false) {
+    if (name in this._filters && append) {
+      this._filters[name] = [].concat.call(
+        [],
+        this._filters[name],
+        [opts]
+      );
+      return;
+    }
     this._filters[name] = opts;
   }
 

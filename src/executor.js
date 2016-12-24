@@ -58,14 +58,18 @@ class Executor {
    * @returns {function[]}
    */
   resolveFilters(filtersMap) {
-    return Object.keys(filtersMap)
+    const results = Object.keys(filtersMap)
       .map(name => {
         if (typeof name === "function") {
           return name;
         }
-        let filterPath = this.resolveFilterPath(name);
-        return require(filterPath)(filtersMap[name]);
+        const filterPath = this.resolveFilterPath(name);
+        const filterModule = require(filterPath);
+        const filterOpts = filtersMap[name];
+
+        return Array.isArray(filterOpts) ? filterOpts.map(opts => filterModule(opts)) : filterModule(filtersMap[name]);
       });
+    return [].concat.apply([], results);
   }
 
   /**
