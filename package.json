@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/zemd/aul",
   "devDependencies": {
-    "ava": "0.17.0"
+    "ava": "0.19.1"
   },
   "dependencies": {
-    "koa-compose": "3.2.1"
+    "koa-compose": "4.0.0"
   },
   "ava": {
     "files": [
