@@ -1,5 +1,7 @@
 # AUL
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zemd/aul.svg)](https://greenkeeper.io/)
+
 > Elegant database queries executor
 
 [![npm version](https://badge.fury.io/js/aul.svg)](https://www.npmjs.com/package/aul)
