@@ -136,7 +136,9 @@ class Executor {
           if (!criteria.mappers.length) {
             return results;
           }
-          // TODO: check if results is array
+          if (!Array.isArray(results)) {
+            results = [results];
+          }
           return criteria.mappers.reduce((results, mapper) => {
             if (typeof mapper === "function") {
               // use custom mapper function that is provided with criteria

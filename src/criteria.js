@@ -28,7 +28,7 @@ class Criteria {
    * @param {{}} opts
    * @param {boolean} append
    */
-  addFilter(name, opts, append = false) {
+  addFilter(name, opts, append = true) {
     if (name in this._filters && append) {
       this._filters[name] = [].concat.call(
         [],
