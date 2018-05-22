@@ -26,7 +26,7 @@
     "ava": "^0.25.0"
   },
   "dependencies": {
-    "koa-compose": "^4.0.0"
+    "koa-compose": "^4.1.0"
   },
   "ava": {
     "files": [
